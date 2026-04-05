@@ -1,7 +1,6 @@
 #include "Button.h"
 
-
-Button::Button(Vector2f const& position, string const& texturePath, string const& buttonText, string const& fontPath,string const& clickSoundPath, Color const& textCol, int const& size) : enable(true)
+Button::Button(Vector2f const& position, string const& texturePath, string const& buttonText, string const& fontPath, string const& clickSoundPath, Color const& textCol, int const& size) : enable(true)
 {
 	Texture& texture = AssetManager::GetTexture(texturePath);
 	sprite = new Sprite(texture);
@@ -41,18 +40,14 @@ void Button::handleEvent(Event const& event, RenderWindow const& window)
 {
 	if (!enable)
 		return;
-	if (event.is<Event::MouseButtonPressed>())
+	if (Mouse::isButtonPressed(Mouse::Button::Left))
 	{
-		auto mouseEvent = event.getIf<Event::MouseButtonPressed>();
-		if (mouseEvent->button == Mouse::Button::Left)
+		Vector2i mousePos = Mouse::getPosition(window);
+		FloatRect bounds = sprite->getGlobalBounds();
+		if (bounds.contains(static_cast<Vector2f>(mousePos)))
 		{
-			Vector2i mousePos = Mouse::getPosition(window);
-			FloatRect bounds = sprite->getGlobalBounds();
-			if (bounds.contains(static_cast<Vector2f>(mousePos)))
-			{
-				clickSound->play();
-				if (onClickCallback) onClickCallback();
-			}
+			if(clickSound != nullptr) clickSound->play();
+			if (onClickCallback) onClickCallback();
 		}
 	}
 }
@@ -81,8 +76,19 @@ bool Button::isEnable() const
 
 void Button::setSize(float x, float y)
 {
-	sprite->setScale({x, y});
+	sprite->setScale({ x, y });
 	centerText();
+}
+
+void Button::setTextColor(Color const& txt, Color const& outline)
+{
+	text->setFillColor(txt);
+	text->setOutlineColor(outline);
+}
+
+void Button::setSpriteColor(Color const& color)
+{
+	sprite->setColor(color);
 }
 
 void Button::centerText()
@@ -90,5 +96,5 @@ void Button::centerText()
 	FloatRect spriteBounds = sprite->getGlobalBounds();
 	FloatRect textBouns = text->getGlobalBounds();
 	text->setOrigin({ textBouns.size.x / 2, textBouns.size.y / 2 });
-	text->setPosition({spriteBounds.position.x + spriteBounds.size.x/2,spriteBounds.position.y + spriteBounds.size.y / 2 });
+	text->setPosition({ spriteBounds.position.x + spriteBounds.size.x / 2,spriteBounds.position.y + spriteBounds.size.y / 2 });
 }
