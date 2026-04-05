@@ -20,8 +20,8 @@ public:
 	void setEnable(bool enable);
 	bool isEnable() const;
 	void setSize(float x, float y);
-	void setTextColor(Color const& txt, Color const& outline = Color::Black);
-	void setSpriteColor(Color const& color);
+  void setTextColor(Color const& txt, Color const& outline = Color::Black);
+  void setSpriteColor(Color const& color);
 
 private:
 	Sprite *sprite;

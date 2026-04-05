@@ -1,6 +1,5 @@
 #include "Button.h"
 
-
 Button::Button(Vector2f const& position, string const& texturePath, string const& buttonText, string const& fontPath, string const& clickSoundPath, Color const& textCol, int const& size) : enable(true)
 {
 	Texture& texture = AssetManager::GetTexture(texturePath);

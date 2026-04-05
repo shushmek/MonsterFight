@@ -26,18 +26,19 @@ void Engine::Run()
 {
 	cout << "is start" << endl;
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∨
-	btn.setSize(2, 1);												
-	btn.setSpriteColor(Color(255, 0, 0));							
-	btn.setOnClick([this]() {btn.isPressed = true;  sceneActiv = true;});
-																	
-	exitBTN.setSpriteColor(Color::Red);								
-	exitBTN.setSize(2, 1);											
-	exitBTN.setOnClick([this] {window->close();});	
-	closeBTN.setSpriteColor(Color(200, 0 ,0));
-	closeBTN.setOnClick([this] {sceneActiv = false;});
-	scene.setTexture(&AssetManager::GetTexture("Sprite/lavash.jpg"));
+btn.setSize(2, 1);												
+btn.setSpriteColor(Color(255, 0, 0));							
+btn.setOnClick([this]() {btn.isPressed = true;  sceneActiv = true;});
+																
+exitBTN.setSpriteColor(Color::Red);								
+exitBTN.setSize(2, 1);											
+exitBTN.setOnClick([this] {window->close();});	
+closeBTN.setSpriteColor(Color(200, 0 ,0));
+closeBTN.setOnClick([this] {sceneActiv = false;});
+scene.setTexture(&AssetManager::GetTexture("Sprite/lavash.jpg"));
 
-	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∧
+///////////////////////////////////////////////////////////////// BUTTON FOR TEST∧
+
 	Clock clock;
 
 
