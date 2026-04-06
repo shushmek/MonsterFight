@@ -1,15 +1,15 @@
 #include "AssetManager.h"
 
-unordered_map<string, Texture> AssetManager::mTextures;
-unordered_map<string, SoundBuffer> AssetManager::mSoundBuffers;
-unordered_map<string, Font> AssetManager::mFonts;
+unordered_map<string, Texture> AssetManager::_textures;
+unordered_map<string, SoundBuffer> AssetManager::_soundBuffers;
+unordered_map<string, Font> AssetManager::_fonts;
 
 Texture& AssetManager::GetTexture(string const& fileName)
 {
-	auto it = mTextures.find(fileName);
-	if (it != mTextures.end())
+	auto it = _textures.find(fileName);
+	if (it != _textures.end())
 		return it->second;
-	Texture& texture = mTextures[fileName];
+	Texture& texture = _textures[fileName];
 	if (!texture.loadFromFile(fileName))
 		cout << "Error load texture: " << fileName << endl;
 	return texture;
@@ -17,10 +17,10 @@ Texture& AssetManager::GetTexture(string const& fileName)
 
 SoundBuffer& AssetManager::GetSoundBuffer(string const& fileName)
 {
-	auto it = mSoundBuffers.find(fileName);
-	if (it != mSoundBuffers.end())
+	auto it = _soundBuffers.find(fileName);
+	if (it != _soundBuffers.end())
 		return it->second;
-	SoundBuffer& soundBuf = mSoundBuffers[fileName];
+	SoundBuffer& soundBuf = _soundBuffers[fileName];
 	if (!soundBuf.loadFromFile(fileName))
 		cout << "Error load sound: " << fileName << endl;
 	return soundBuf;
@@ -28,10 +28,10 @@ SoundBuffer& AssetManager::GetSoundBuffer(string const& fileName)
 
 Font& AssetManager::GetFont(string const& fileName)
 {
-	auto it = mFonts.find(fileName);
-	if (it != mFonts.end())
+	auto it = _fonts.find(fileName);
+	if (it != _fonts.end())
 		return it->second;
-	Font& font = mFonts[fileName];
+	Font& font = _fonts[fileName];
 	if (!font.openFromFile(fileName))
 		cout << "Error load font: " << fileName << endl;
 	return font;
