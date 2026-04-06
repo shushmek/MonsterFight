@@ -9,12 +9,20 @@ using namespace std;
 
 class AssetManager
 {
-public:
-	static Texture& GetTexture(string const& fileName);
-	static SoundBuffer& GetSoundBuffer(string const& fileName);
-	static Font& GetFont(string const& fileName);
+public: //функции для задания соответствующих типов даных 
+	static Texture& GetTexture(string const& fileName); //для текстур
+	static SoundBuffer& GetSoundBuffer(string const& fileName); //для буффуров звука
+	static Font& GetFont(string const& fileName); // для шрифтов
 private:
-	static unordered_map<string, Texture> mTextures;
-	static unordered_map<string, SoundBuffer> mSoundBuffers;
-	static unordered_map<string, Font> mFonts;
+	static unordered_map<string, Texture> _textures;
+	static unordered_map<string, SoundBuffer> _soundBuffers;
+	static unordered_map<string, Font> _fonts;
 };
+//раньше:
+//Texture textur;
+//texstur.loadFromFile("путь к файлу");
+// может засрать память одной и тойже текстурой
+
+//сейчас
+//Texture textur = AssetManager::GetTexture("путь к файлу");
+//один раз загрузил, при осталальных попытках использовать ту же тексуру, даст уже загруженную 
