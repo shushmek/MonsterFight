@@ -1,12 +1,12 @@
 #include "Engine.h"
-#include "Engine.h"
 
 void Engine::Input()
 {
 	while (const optional event = window->pollEvent())
 	{
-		if (event->is<Event::Closed>()) window->close();
+		if (event->is<Event::Closed>()) window->close();//когда на крестик нажал игра закроется
 		/////////////////////////////////////////// BUTTON FOR TEST∨
+		//проверка кнопок на нажатие
 		btn.handleEvent(*event, *window);
 		exitBTN.handleEvent(*event, *window);
 		closeBTN.handleEvent(*event, *window);
@@ -20,25 +20,25 @@ void Engine::Input()
 
 Engine::Engine()
 {
-	background.setTexture(&AssetManager::GetTexture("Sprite/Background.jpg"));
-	fire = new Sprite(fireTexture);
-	fireAnim = new Animator(*fire, IntRect({ 0,0 }, { 32,48 }), 8, 100);
-	fire->setPosition({ 564, 200 });
-	fire->setScale({ 4,4 });
+	background.setTexture(&AssetManager::GetTexture("Sprite/Background.jpg")); //задал текстуру заднику
+	fire = new Sprite(fireTexture); //задал текстуру для спрайта
+	fireAnim = new Animator(*fire, IntRect({ 0,0 }, { 32,48 }), 8, 50); //задал настройки анимации
+	fire->setPosition({ 564, 200 }); // задал положение спрайта
+	fire->setScale({ 4,4 }); // задал размер спрайта
 }
 
 void Engine::Run()
 {
 	cout << "is start" << endl;
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∨
-	btn.setSize(2, 1);
-	btn.setSpriteColor(Color(255, 0, 0));
-	btn.setOnClick([this]() {btn.isPressed = true;  sceneActiv = true;});
+	btn.setSize(2, 1); // задал размер кнопки
+	btn.setSpriteColor(Color(255, 0, 0)); // задал цвет кнопки
+	btn.setOnClick([this]() {btn.isPressed = true;  sceneActiv = true;}); //задал лямбда функцию, при нажатии "открывает" сцену
 	P.setSize(2, 1);
 	P.setOnClick([this]() {
 		P.isPressed = true;
 		if (fireAnim->getPlay()) fireAnim->pause();
-		else fireAnim->play();});
+		else fireAnim->play();}); 
 	R.setSize(2, 1);
 	R.setOnClick([this]() {R.isPressed = true; fireAnim->reset();});
 
@@ -50,12 +50,12 @@ void Engine::Run()
 	scene.setTexture(&AssetManager::GetTexture("Sprite/lavash.jpg"));
 
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∧
-	Clock clock;
+	Clock clock; // инициализировал таймер
 
 
-	while (window->isOpen())
+	while (window->isOpen())//условие работы программы(работает пока открыто окно)
 	{
-		Time dt = clock.restart();
+		Time dt = clock.restart(); //переменная изменения времени
 		Input();
 		Update(dt);
 		Draw();
@@ -65,18 +65,19 @@ void Engine::Run()
 void Engine::Update(Time const& deltaTime)
 {
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∨
+	//---------------------------------------------------------этот блок для красивого нажатия кнопки + событие
 	if (btn.isPressed)
 	{
 		btn.setSpriteColor(Color::Yellow);
 		if (btn.clock.getElapsedTime() > milliseconds(100))
 		{
-			btn.clock.restart();
+			btn.clock.restart(); 
 			btn.isPressed = false;
 		}
-		sceneActiv = true;
+		sceneActiv = true; //событие, конкретно тут "открытие" сцены
 	}
-	else btn.setSpriteColor(Color::White);
-
+	else btn.setSpriteColor(Color::White); 
+	//---------------------------------------------------------
 	if (P.isPressed)
 	{
 		P.setSpriteColor(Color::Yellow);
@@ -111,7 +112,7 @@ void Engine::Update(Time const& deltaTime)
 	}
 	else closeBTN.setSpriteColor(Color(200, 0, 0));
 
-	fireAnim->update(deltaTime);
+	fireAnim->update(deltaTime);//тут анимация запускается
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∧
 
 }
@@ -121,6 +122,7 @@ void Engine::Draw()
 	window->clear();
 	window->draw(background);
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∨
+	//отрисовка обЪектов, если сцена(2) активна то рисуется она, иначе первая P.s.(по хорошему сделать состояния через switch, но для примера пойдет)
 	if (sceneActiv)
 	{
 		btn.setEnable(false);
