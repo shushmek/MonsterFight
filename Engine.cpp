@@ -7,51 +7,65 @@ void Engine::Input()
 		if (event->is<Event::Closed>()) window->close();//когда на крестик нажал игра закроется
 		/////////////////////////////////////////// BUTTON FOR TEST∨
 		//проверка кнопок на нажатие
-		btn.handleEvent(*event, *window);
+		start.handleEvent(*event, *window);
 		exitBTN.handleEvent(*event, *window);
 		closeBTN.handleEvent(*event, *window);
 		P.handleEvent(*event, *window);
 		R.handleEvent(*event, *window);
+		plus.handleEvent(*event, *window);
+		minus.handleEvent(*event, *window);
 		/////////////////////////////////////////// BUTTON FOR TEST∧
 	}
 }
 
-
-
 Engine::Engine()
 {
-	background.setTexture(&AssetManager::GetTexture("Sprite/Background.jpg")); //задал текстуру заднику
-	fire = new Sprite(fireTexture); //задал текстуру для спрайта
-	fireAnim = new Animator(*fire, IntRect({ 0,0 }, { 32,48 }), 8, 50); //задал настройки анимации
-	fire->setPosition({ 564, 200 }); // задал положение спрайта
-	fire->setScale({ 4,4 }); // задал размер спрайта
-}
-
-void Engine::Run()
-{
-	cout << "is start" << endl;
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∨
-	btn.setSize(2, 1); // задал размер кнопки
-	btn.setSpriteColor(Color(255, 0, 0)); // задал цвет кнопки
-	btn.setOnClick([this]() {btn.isPressed = true;  sceneActiv = true;}); //задал лямбда функцию, при нажатии "открывает" сцену
+	fire.setPosition({ 864, 250 });
+
+	hpText = new Text(AssetManager::GetFont("Font/BankGothic.otf"));
+	hpText->setPosition({ 200, 100 });
+
+
+	hpBack = new Sprite(sq);
+	hpBack->setPosition({ 200, 300 });
+	hpBack->setScale({ 2, 1 });
+
+	hpBar = new Sprite(sq);
+	hpBar->setScale({ 2,1 });
+	hpBar->setPosition({ 210, 290 });
+
+	hpBack->setColor(Color(100, 0, 0));
+	hpBar->setColor(Color(220, 0, 0));
+
+	plus.setOnClick([this]() {hp += 1; plus.isPressed = true; if (hp > 100) hp = 100; hpBar->setScale({ (hp * 2 / 100),1 });});
+	minus.setOnClick([this]() {hp -= 1; minus.isPressed = true; if (hp < 0) hp = 0; hpBar->setScale({ (hp * 2 / 100),1 });});
+
+	start.setSize(2, 1); // задал размер кнопки
+	start.setSpriteColor(Color(255, 0, 0)); // задал цвет кнопки
+	start.setOnClick([this]() {start.isPressed = true;  cutsceneActiv = true; cutscene._anim->play();}); //задал лямбда функцию, при нажатии "открывает" сцену
 	P.setSize(2, 1);
 	P.setOnClick([this]() {
 		P.isPressed = true;
-		if (fireAnim->getPlay()) fireAnim->pause();
-		else fireAnim->play();}); 
+		if (fire.AnimGetPlay()) fire.AnimPause();
+		else fire.AnimPlay();});
 	R.setSize(2, 1);
-	R.setOnClick([this]() {R.isPressed = true; fireAnim->reset();});
+	R.setOnClick([this]() {R.isPressed = true; fire.AnimReset();});
 
 	exitBTN.setSpriteColor(Color::Red);
 	exitBTN.setSize(2, 1);
 	exitBTN.setOnClick([this] {window->close();});
 	closeBTN.setSpriteColor(Color(200, 0, 0));
 	closeBTN.setOnClick([this] {sceneActiv = false;});
-	scene.setTexture(&AssetManager::GetTexture("Sprite/lavash.jpg"));
-
+	cutscene._anim->setLoop(false);
+	cutscene._anim->setOnFinished([this]() {cutsceneActiv = false; cutscene.AnimStop(); sceneActiv = true;});
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∧
-	Clock clock; // инициализировал таймер
+}
 
+void Engine::Run()
+{
+	cout << "is start" << endl;
+	Clock clock; // инициализировал таймер
 
 	while (window->isOpen())//условие работы программы(работает пока открыто окно)
 	{
@@ -66,18 +80,40 @@ void Engine::Update(Time const& deltaTime)
 {
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∨
 	//---------------------------------------------------------этот блок для красивого нажатия кнопки + событие
-	if (btn.isPressed)
+	hpText->setString(to_string(hp) + " HP");
+	if (start.isPressed)
 	{
-		btn.setSpriteColor(Color::Yellow);
-		if (btn.clock.getElapsedTime() > milliseconds(100))
+		start.setSpriteColor(Color::Yellow);
+		if (start.clock.getElapsedTime() > milliseconds(100))
 		{
-			btn.clock.restart(); 
-			btn.isPressed = false;
+			start.clock.restart();
+			start.isPressed = false;
 		}
-		sceneActiv = true; //событие, конкретно тут "открытие" сцены
 	}
-	else btn.setSpriteColor(Color::White); 
+	else start.setSpriteColor(Color::White);
 	//---------------------------------------------------------
+	if (plus.isPressed)
+	{
+		plus.setSpriteColor(Color::Yellow);
+		if (plus.clock.getElapsedTime() > milliseconds(100))
+		{
+			plus.clock.restart();
+			plus.isPressed = false;
+		}
+	}
+	else plus.setSpriteColor(Color::White);
+
+	if (minus.isPressed)
+	{
+		minus.setSpriteColor(Color::Yellow);
+		if (minus.clock.getElapsedTime() > milliseconds(100))
+		{
+			minus.clock.restart();
+			minus.isPressed = false;
+		}
+	}
+	else minus.setSpriteColor(Color::White);
+
 	if (P.isPressed)
 	{
 		P.setSpriteColor(Color::Yellow);
@@ -112,7 +148,10 @@ void Engine::Update(Time const& deltaTime)
 	}
 	else closeBTN.setSpriteColor(Color(200, 0, 0));
 
-	fireAnim->update(deltaTime);//тут анимация запускается
+	fire.AnimUpdate(deltaTime);//тут анимация запускается
+	menuBackground.AnimUpdate(deltaTime);
+	gameBackground.AnimUpdate(deltaTime);
+	cutscene.AnimUpdate(deltaTime);
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∧
 
 }
@@ -120,26 +159,37 @@ void Engine::Update(Time const& deltaTime)
 void Engine::Draw()
 {
 	window->clear();
-	window->draw(background);
+	menuBackground.draw(*window);
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∨
 	//отрисовка обЪектов, если сцена(2) активна то рисуется она, иначе первая P.s.(по хорошему сделать состояния через switch, но для примера пойдет)
 	if (sceneActiv)
 	{
-		btn.setEnable(false);
+		start.setEnable(false);
 		exitBTN.setEnable(false);
+		plus.setEnable(true);
+		minus.setEnable(true);
 
-		window->draw(scene);
-		window->draw(*fire);
+		gameBackground.draw(*window);
+		fire.draw(*window);
 		P.draw(*window);
 		R.draw(*window);
+		plus.draw(*window);
+		minus.draw(*window);
 		closeBTN.draw(*window);
+		window->draw(*hpBack);
+		window->draw(*hpBar);
+		window->draw(*hpText);
 	}
 	else {
-		btn.setEnable(true);
+		plus.setEnable(false);
+		minus.setEnable(false);
+		start.setEnable(true);
 		exitBTN.setEnable(true);
-		btn.draw(*window);
+		start.draw(*window);
 		exitBTN.draw(*window);
+		if(cutsceneActiv)
+			cutscene.draw(*window);
 	}
-	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∧
 	window->display();
+	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∧
 }
