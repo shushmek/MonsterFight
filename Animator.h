@@ -12,7 +12,7 @@ using namespace std;
 class Animator
 {
 public:
-	explicit Animator(Sprite& sprite, IntRect const& rect, int frameCount, int frameTime = 0, float animTime = 0);
+	explicit Animator(Sprite& sprite, IntRect const& rect, int frameCount , int Ycount, int frameTime = 0, float animTime = 0);
 	//конструктор аниматора Animator anim(sprite, IntRect({0,0},{32,32}), 10, 0, 2f);
 										//  1				2			   3   4  5; 
 										// 1-спрайтшит для анимации(тип спрайт), 
@@ -36,6 +36,8 @@ public:
 private:
 	Sprite& _sprite;
 	int _currentFrame = 0;
+	int _cerrentYFrame = 0;
+	int _maxYframe = 1;
 	vector<IntRect> _frames;
 	Clock _clock;
 	int _frameTime;

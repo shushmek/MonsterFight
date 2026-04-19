@@ -1,13 +1,16 @@
 #include "Animator.h"
 
-Animator::Animator(Sprite& sprite, IntRect const& rect, int frameCount, int frameTime, float animTime) : _sprite(sprite), _playing(true), _loop(true), _finished(false), _animTime(animTime), _frameTime(frameTime)
+Animator::Animator(Sprite& sprite, IntRect const& rect, int frameCount, int Ycount, int frameTime, float animTime) : _sprite(sprite), _playing(true), _loop(true), _finished(false), _animTime(animTime), _frameTime(frameTime), _maxYframe(Ycount)
 {
 	if (_frameTime == 0)	_frameTime = static_cast<int>(std::round(_animTime * 1000 / frameCount));
 
 	_frames.clear();
-	_frames.reserve(frameCount);
-
-	for (int i = 0; i < frameCount; i++) _frames.emplace_back(IntRect({ rect.position.x + i * rect.size.x, rect.position.y }, { rect.size.x , rect.size.y }));
+	_frames.reserve(frameCount*Ycount);
+	for (int j = 0; j < Ycount; j++)
+	{
+		for (int i = 0; i < frameCount; i++) 
+			_frames.emplace_back(IntRect({ rect.position.x + i * rect.size.x, rect.position.y + j * rect.size.y}, { rect.size.x , rect.size.y }));
+	}
 
 	_sprite.setTextureRect(_frames[0]);
 }
@@ -58,6 +61,8 @@ void Animator::setFrameTime(int frametime)
 void Animator::setAnimTime(float animTime)
 {
 	_animTime = animTime;
+	_frameTime = static_cast<int>(std::round(_animTime * 1000 / _frames.size()));
+
 }
 
 
@@ -77,6 +82,7 @@ void Animator::update(Time delta)
 			{
 				_finished = true;
 				_playing = false;
+				_onFinished();
 			}
 		}
 		else _currentFrame++;
