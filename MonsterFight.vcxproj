@@ -137,6 +137,7 @@
     <ClCompile Include="Armor.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Cards.cpp" />
     <ClCompile Include="Creature.cpp" />
     <ClCompile Include="Effects.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Armor.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Cards.h" />
     <ClInclude Include="Creature.h" />
     <ClInclude Include="Effects.h" />
     <ClInclude Include="Enemy.h" />
