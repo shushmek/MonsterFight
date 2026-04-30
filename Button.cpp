@@ -36,7 +36,7 @@ void Button::setOnClick(function<void()> callback)
 	onClickCallback = move(callback);
 }
 
-void Button::handleEvent(Event const& event, RenderWindow const& window)
+ void Button::handleEvent(Event const& event, RenderWindow const& window)
 {
 	if (!enable)
 		return;
@@ -48,6 +48,7 @@ void Button::handleEvent(Event const& event, RenderWindow const& window)
 		{
 			if(clickSound != nullptr) clickSound->play();
 			if (onClickCallback) onClickCallback();
+			//cout << Mouse::getPosition().x << "|" << Mouse::getPosition().y << endl;
 		}
 	}
 }

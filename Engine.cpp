@@ -14,6 +14,7 @@ void Engine::Input()
 		R.handleEvent(*event, *window);
 		plus.handleEvent(*event, *window);
 		minus.handleEvent(*event, *window);
+		slider.handleEvent(*event, *window);
 		/////////////////////////////////////////// BUTTON FOR TEST∧
 	}
 }
@@ -38,8 +39,8 @@ Engine::Engine()
 	hpBack->setColor(Color(100, 0, 0));
 	hpBar->setColor(Color(220, 0, 0));
 
-	plus.setOnClick([this]() {hp += 1; plus.isPressed = true; if (hp > 100) hp = 100; hpBar->setScale({ (hp * 2 / 100),1 });});
-	minus.setOnClick([this]() {hp -= 1; minus.isPressed = true; if (hp < 0) hp = 0; hpBar->setScale({ (hp * 2 / 100),1 });});
+	plus.setOnClick([this]() {hp += 1; plus.isPressed = true; if (hp > 100) hp = 100; hpBar->setScale({ (static_cast<float>(hp) * 2 / 100),1 });});
+	minus.setOnClick([this]() {hp -= 1; minus.isPressed = true; if (hp < 0) hp = 0; hpBar->setScale({ (static_cast<float>(hp) * 2 / 100),1 });});
 
 	start.setSize(2, 1); // задал размер кнопки
 	start.setSpriteColor(Color(255, 0, 0)); // задал цвет кнопки
@@ -59,14 +60,17 @@ Engine::Engine()
 	closeBTN.setOnClick([this] {sceneActiv = false;});
 	cutscene._anim->setLoop(false);
 	cutscene._anim->setOnFinished([this]() {cutsceneActiv = false; cutscene.AnimStop(); sceneActiv = true;});
+	slider.setScale({ 5, 1 });
+	slider.setOnClick([this]() {hp = static_cast<int>(round(100 * slider.getSliderNum()));});
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∧
 }
 
 void Engine::Run()
 {
 	cout << "is start" << endl;
+	cout << slider.getPosition().x << "|" << slider.getPosition().y << endl;
 	Clock clock; // инициализировал таймер
-
+	cutscene._anim->stop();
 	while (window->isOpen())//условие работы программы(работает пока открыто окно)
 	{
 		Time dt = clock.restart(); //переменная изменения времени
@@ -168,6 +172,7 @@ void Engine::Draw()
 		exitBTN.setEnable(false);
 		plus.setEnable(true);
 		minus.setEnable(true);
+		slider.setEnable(true);
 
 		gameBackground.draw(*window);
 		fire.draw(*window);
@@ -179,8 +184,10 @@ void Engine::Draw()
 		window->draw(*hpBack);
 		window->draw(*hpBar);
 		window->draw(*hpText);
+		slider.draw(*window);
 	}
 	else {
+		slider.setEnable(false);
 		plus.setEnable(false);
 		minus.setEnable(false);
 		start.setEnable(true);
