@@ -68,7 +68,6 @@ Engine::Engine()
 void Engine::Run()
 {
 	cout << "is start" << endl;
-	cout << slider.getPosition().x << "|" << slider.getPosition().y << endl;
 	Clock clock; // инициализировал таймер
 	cutscene._anim->stop();
 	while (window->isOpen())//условие работы программы(работает пока открыто окно)
@@ -84,6 +83,7 @@ void Engine::Update(Time const& deltaTime)
 {
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∨
 	//---------------------------------------------------------этот блок для красивого нажатия кнопки + событие
+	hpBar->setScale({ (static_cast<float>(hp) * 2 / 100),1 });
 	hpText->setString(to_string(hp) + " HP");
 	if (start.isPressed)
 	{
