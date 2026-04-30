@@ -139,6 +139,7 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Slider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="sfml-audio-3.dll" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Slider.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

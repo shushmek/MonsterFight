@@ -6,6 +6,7 @@
 #include "Button.h"
 #include "Animator.h"
 #include "Object.h"
+#include "Slider.h"
 
 using namespace sf;
 using namespace std;
@@ -28,7 +29,7 @@ class Engine
 
 	//вторая сцена для наглядности работы кнопок
 
-	float hp = 100;
+	int hp = 100;
 	Texture sq = AssetManager::GetTexture("Sprite/square.jpg");
 	Text* hpText;
 	Sprite* hpBack;
@@ -36,6 +37,7 @@ class Engine
 
 	Button plus = Button({ 200,500 }, "Sprite/square.jpg", "+", "Font/BankGothic.otf"); // пауза(для теста анимации)
 	Button minus = Button({ 400,500 }, "Sprite/square.jpg", "-", "Font/BankGothic.otf"); //рестарт(для теста анимации)
+	Slider slider = Slider({ 300, 10 }, "Sprite/square.jpg", "", "Font/BankGothic.otf");
 	
 	Object fire = Object(AssetManager::GetTexture("Sprite/Player.png"), IntRect({ 0,0 }, { 256,256 }), 10, 1, 100);
 	///////////////////////////////////////////////////////////////// демонстрация ∧∧∧

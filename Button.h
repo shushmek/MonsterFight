@@ -17,7 +17,7 @@ public:
 	//↑ конструктор в котором нужно задавать объекты, например: Button btn({200, 200}, текстура, "текст на кнопке", шрифт,буфер звука, цвет текста, размер текста ); {200, 200}-координаты расположения кнопки
 	void setOnClick(function<void()> callback); // лямбда функция вызываемая при нажатии, т.е. функция при вызове которой происходит что угодно, например: btn.setOnClick([]() {cout << "hello" << endl; });
 												// НЕ ЗАБУТЬ ЗА ТОЧКУ С ЗАПЯТОЙ! в данном примере при нажатии на кнопку выводится "hello"
-	void handleEvent(Event const& event, RenderWindow const& window); //проверка на нажатие. Нужно засунуть в Input() в Engine.cpp 
+	virtual void handleEvent(Event const& event, RenderWindow const& window); //проверка на нажатие. Нужно засунуть в Input() в Engine.cpp 
 	void draw(RenderWindow& window) const; // отрисовка кнопки. Нужно засунуть в Draw() в Engine.cpp 
 	void setText(string const& text); //задать текст кнопки
 	void setEnable(bool enable); //изменить кликабельность кнопки
@@ -26,7 +26,7 @@ public:
   void setTextColor(Color const& txt, Color const& outline = Color::Black); // изменить цвет текста
   void setSpriteColor(Color const& color); // изменить цвет спрайта
 
-private:
+protected:
 	Sprite *sprite;
 	Text *text;
 	Sound *clickSound;
