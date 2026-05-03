@@ -75,3 +75,13 @@ void Object::setPosition(Vector2f pos)
 {
 	_sprite->setPosition(pos);
 }
+
+Vector2f Object::getScale()
+{
+	return _sprite->getScale();
+}
+
+void Object::setScale(Vector2f scale)
+{
+	_sprite->setScale(scale);
+}

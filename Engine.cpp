@@ -62,6 +62,7 @@ Engine::Engine()
 	cutscene._anim->setOnFinished([this]() {cutsceneActiv = false; cutscene.AnimStop(); sceneActiv = true;});
 	slider.setScale({ 5, 1 });
 	slider.setOnClick([this]() {hp = static_cast<int>(round(100 * slider.getSliderNum()));});
+	mob.setPosition({ 500, 200 });
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∧
 }
 
@@ -156,6 +157,7 @@ void Engine::Update(Time const& deltaTime)
 	menuBackground.AnimUpdate(deltaTime);
 	gameBackground.AnimUpdate(deltaTime);
 	cutscene.AnimUpdate(deltaTime);
+	mob.AnimUpdate(deltaTime);
 	///////////////////////////////////////////////////////////////// BUTTON FOR TEST∧
 
 }
@@ -176,6 +178,7 @@ void Engine::Draw()
 
 		gameBackground.draw(*window);
 		fire.draw(*window);
+		mob.draw(*window);
 		P.draw(*window);
 		R.draw(*window);
 		plus.draw(*window);
