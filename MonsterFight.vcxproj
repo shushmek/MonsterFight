@@ -142,6 +142,7 @@
     <ClCompile Include="Effects.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="ItemList.cpp" />
     <ClCompile Include="KombatBehavior.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="Effects.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="ItemList.h" />
     <ClInclude Include="KombatBehavior.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />

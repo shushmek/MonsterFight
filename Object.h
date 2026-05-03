@@ -30,6 +30,8 @@ public:
 	//бфзовые функции
 	Vector2f getPosition();
 	void setPosition(Vector2f pos);
+	Vector2f getScale();
+	void setScale(Vector2f scale);
 
 	Texture _texture;
 	Sprite* _sprite;
