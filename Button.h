@@ -24,7 +24,7 @@ public:
 	bool isActive() const; //активна ли кнопка, если нет то на нее нельзя нажать
 	void setSize(float x, float y); // изменитиь размер
   void setTextColor(Color const& txt, Color const& outline = Color::Black); // изменить цвет текста
-  void setSpriteColor(Color const& color); // изменить цвет спрайта
+  virtual void setSpriteColor(Color const& color); // изменить цвет спрайта
 
 protected:
 	Sprite *sprite;

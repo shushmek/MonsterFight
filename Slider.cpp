@@ -60,8 +60,26 @@ float Slider::getSliderNum()
 	return _slider;
 }
 
+void Slider::setSliderNum(float x)
+{
+	_slider = x;
+	SetScale(x);
+}
+
+void Slider::setColor(const Color& color)
+{
+	_background->setColor(color);
+}
+
 void Slider::SlideCalculate(int x)
 {
 	_slider = (x - sprite->getPosition().x) / sprite->getGlobalBounds().size.x;
 	_background->setScale({_slider * sprite->getScale().x, sprite->getScale().y});
 }
+
+void Slider::SetScale(int x)
+{
+	_background->setScale({ _slider * sprite->getScale().x, sprite->getScale().y });
+}
+
+

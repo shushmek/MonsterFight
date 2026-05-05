@@ -4,7 +4,7 @@
 #include "Object.h"
 #include "Cards.h"
 #include "Effects.h"
-
+#include "Action.h"
 using namespace sf;
 using namespace std;
 
@@ -46,7 +46,8 @@ private:
 	int _combo;
 	int _critChace;
 	float _critMod;
-	//Effects _effect;
 	Object* _sArmor;
+	//Action* _acton1;
+	//Action* _acton2;
 };
 

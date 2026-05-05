@@ -5,6 +5,26 @@ void Engine::Input()
 	while (const optional event = window->pollEvent())
 	{
 		if (event->is<Event::Closed>()) window->close();//когда на крестик нажал игра закроется
+		if (Keyboard::isKeyPressed(Keyboard::Key::W)) 
+		{
+			if (mob.getHealth() < mob.getMaxHealth())
+				mob.TakeDamage(-1);
+			else	
+				mob.setHealth(mob.getMaxHealth());
+			
+			
+			hpBar.setSliderNum(static_cast<float>(mob.getHealth()) / mob.getMaxHealth());
+		}
+		if (Keyboard::isKeyPressed(Keyboard::Key::S)) 
+		{
+			if (mob.getHealth() > 0) 
+				mob.TakeDamage(1);
+			else
+				mob.setHealth(0);
+
+			hpBar.setSliderNum(static_cast<float>(mob.getHealth()) / mob.getMaxHealth());
+
+		}
 		/////////////////////////////////////////// DEMOT∨
 		//проверка кнопок на нажатие
 		StartBTN.handleEvent(*event, *window);
@@ -41,6 +61,7 @@ void Engine::Run()
 {
 	cout << "is start" << endl;
 	Clock clock; // инициализировал таймер
+	hpBar.setColor(Color(200,0,0));
 	while (window->isOpen())//условие работы программы(работает пока открыто окно)
 	{
 		Time dt = clock.restart(); //переменная изменения времени
@@ -89,6 +110,7 @@ void Engine::Draw()
 
 		gameBackground.draw(*window);
 		mob.draw(*window);
+		hpBar.draw(*window);
 		toMenuBTN.draw(*window);
 		break;
 		//Statistick
@@ -106,4 +128,5 @@ void Engine::BTNOff()
 	StartBTN.setActive(false);
 	exitBTN.setActive(false);
 	toMenuBTN.setActive(false);
+	hpBar.setActive(false);
 }

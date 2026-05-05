@@ -11,12 +11,14 @@ public:
 	Vector2f getPosition();
 	void draw(RenderWindow& window);
 	float getSliderNum();
+	void setSliderNum(float x);
+	virtual void setColor(const Color& color);
 private:
 
 	float _slider = 0;
 	Sprite* _background;
 	void SlideCalculate(int x);
-
+	void SetScale(int x);
 };
 
 
