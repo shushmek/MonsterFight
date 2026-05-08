@@ -20,11 +20,11 @@ public:
 	virtual void handleEvent(Event const& event, RenderWindow const& window); //проверка на нажатие. Нужно засунуть в Input() в Engine.cpp 
 	void draw(RenderWindow& window) const; // отрисовка кнопки. Нужно засунуть в Draw() в Engine.cpp 
 	void setText(string const& text); //задать текст кнопки
-	void setEnable(bool enable); //изменить кликабельность кнопки
-	bool isEnable() const; //активна ли кнопка, если нет то на нее нельзя нажать
+	void setActive(bool enable); //изменить кликабельность кнопки
+	bool isActive() const; //активна ли кнопка, если нет то на нее нельзя нажать
 	void setSize(float x, float y); // изменитиь размер
   void setTextColor(Color const& txt, Color const& outline = Color::Black); // изменить цвет текста
-  void setSpriteColor(Color const& color); // изменить цвет спрайта
+  virtual void setSpriteColor(Color const& color); // изменить цвет спрайта
 
 protected:
 	Sprite *sprite;

@@ -48,7 +48,6 @@ void Button::setOnClick(function<void()> callback)
 		{
 			if(clickSound != nullptr) clickSound->play();
 			if (onClickCallback) onClickCallback();
-			//cout << Mouse::getPosition().x << "|" << Mouse::getPosition().y << endl;
 		}
 	}
 }
@@ -65,12 +64,12 @@ void Button::setText(string const& txt)
 	centerText();
 }
 
-void Button::setEnable(bool state)
+void Button::setActive(bool state)
 {
 	enable = state;
 }
 
-bool Button::isEnable() const
+bool Button::isActive() const
 {
 	return false;
 }
@@ -78,6 +77,7 @@ bool Button::isEnable() const
 void Button::setSize(float x, float y)
 {
 	sprite->setScale({ x, y });
+	text->setCharacterSize(text->getCharacterSize() * x);
 	centerText();
 }
 
@@ -97,5 +97,5 @@ void Button::centerText()
 	FloatRect spriteBounds = sprite->getGlobalBounds();
 	FloatRect textBouns = text->getGlobalBounds();
 	text->setOrigin({ textBouns.size.x / 2, textBouns.size.y / 2 });
-	text->setPosition({ spriteBounds.position.x + spriteBounds.size.x / 2,spriteBounds.position.y + spriteBounds.size.y / 2 });
+	text->setPosition({ spriteBounds.position.x + spriteBounds.size.x / 2,spriteBounds.position.y + spriteBounds.size.y / 2 - text->getGlobalBounds().size.y/2 });
 }

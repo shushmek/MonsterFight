@@ -60,7 +60,7 @@ public:
 	void AnimUpdate(Time dt); //игра анимации. Нужно засунуть в Update() в Engine.cpp  
 	void AnimStop();
 
-private:
+protected:
 	string _name;
 	int _level;
 	int _maxHP;
