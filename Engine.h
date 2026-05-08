@@ -23,15 +23,17 @@ class Engine
 	//MENU
 	Object menuBackground = Object(AssetManager::GetTexture("Sprite/MainMenu.jpg"), IntRect({ 0,0 }, { 1280,720 }), 9, 1, 100);
 	Object StartCutscene = Object(AssetManager::GetTexture("Sprite/Cutscen.jpg"), IntRect({0,0}, {1280,720}), 10, 5, 60);
-	Button StartBTN = Button({ 700,200 }, "Sprite/square.jpg", "START", "Font/BankGothic.otf", "", Color::Black, 35); //переход на "другую" сцену(просто отрисовка нового фона поверх других)
-	Button exitBTN = Button({ 700,400 }, "Sprite/square.jpg", "EXIT", "Font/BankGothic.otf", "", Color::Black, 35); //выход из игры
+	Button startBTN = Button({ 100,200 }, "Sprite/btn.png", "START", "Font/BankGothic.otf", "", Color::White, 45); //переход на "другую" сцену(просто отрисовка нового фона поверх других)
+	Button statBTN = Button({ 100,350 }, "Sprite/btn.png", "STATISTICS", "Font/BankGothic.otf", "", Color::White, 35); //переход на "другую" сцену(просто отрисовка нового фона поверх других)
+	Button exitBTN = Button({ 100,500 }, "Sprite/btn.png", "EXIT", "Font/BankGothic.otf", "", Color::White, 45); //выход из игры
 	//Game
 	Object gameBackground = Object(AssetManager::GetTexture("Sprite/GameBackground.jpg"), IntRect({0,0}, {1280,720}), 9, 1, 100);
 
-	Button toMenuBTN = Button({ 50,50 }, "Sprite/square.jpg", "CL0SE", "Font/BankGothic.otf"); //вернутся в первую сцену
+	Button toMenuBTN = Button({ 50,50 }, "Sprite/btn.png", "CL0SE", "Font/BankGothic.otf", "", Color::White, 45); //вернутся в первую сцену
 	
 	Player mob = Player("none", 1, 100, 1, 0, 3, 0, 2.f, 2, 6, 30, items.weapons[1], items.armors[1], AssetManager::GetTexture("Sprite/Player.png"), IntRect({ 0,0 }, { 256,256 }), 10, 1, 100);
-	Slider hpBar = Slider({ 10,680 }, "Sprite/square.jpg", "", "Font/BankGothic.otf", "", Color::Black, 35);
+
+	Slider hpBar = Slider({ 10,640 }, "Sprite/SliderBack.png", AssetManager::GetTexture("Sprite/SliderFront.png"), "", "Font/BankGothic.otf");
 	///////////////////////////////////////////////////////////////// DEMO ∧∧∧
 
 	void Input(); // обработка нажатий и ввода с клавиатуры

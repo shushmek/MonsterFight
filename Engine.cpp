@@ -4,6 +4,7 @@ void Engine::Input()
 {
 	while (const optional event = window->pollEvent())
 	{
+		/////////////////////////////////////////// DEMOT∨
 		if (event->is<Event::Closed>()) window->close();//когда на крестик нажал игра закроется
 		if (Keyboard::isKeyPressed(Keyboard::Key::W)) 
 		{
@@ -25,9 +26,8 @@ void Engine::Input()
 			hpBar.setSliderNum(static_cast<float>(mob.getHealth()) / mob.getMaxHealth());
 
 		}
-		/////////////////////////////////////////// DEMOT∨
 		//проверка кнопок на нажатие
-		StartBTN.handleEvent(*event, *window);
+		startBTN.handleEvent(*event, *window);
 		exitBTN.handleEvent(*event, *window);
 		toMenuBTN.handleEvent(*event, *window);
 		/////////////////////////////////////////// DEMOT∧
@@ -42,15 +42,22 @@ Engine::Engine()
 	StartCutscene.AnimSetOnFinished([this]() {state = State::Game;});
 	StartCutscene.AnimStop();
 	
-	StartBTN.setOnClick([this]() {StartCutscene._anim->play();}); //задал лямбда функцию, при нажатии "открывает" сцену
+	startBTN.setOnClick([this]() {StartCutscene._anim->play();}); //задал лямбда функцию, при нажатии "открывает" сцену
+	startBTN.setSpriteColor(Color(180,86,140));
 	
-	exitBTN.setSpriteColor(Color(200,0,0));
+	statBTN.setOnClick([this]() {state = State::Statistic;}); //задал лямбда функцию, при нажатии "открывает" сцену
+	statBTN.setSpriteColor(Color(180, 86, 140));
+
+	exitBTN.setSpriteColor(Color(222, 32, 32));
 	exitBTN.setOnClick([this] {window->close();});
 
 	//GAME
 	toMenuBTN.setOnClick([this]() {state = State::Menu;});
-	toMenuBTN.setSpriteColor(Color(200, 0, 0));
+	toMenuBTN.setSpriteColor(Color(222, 32, 32));
+	toMenuBTN.setSize(0.6, 0.6);
 	
+	hpBar.setScale({0.6, 1});
+
 	mob.AnimStop();
 	mob.setPosition({200,300});
 
@@ -93,11 +100,13 @@ void Engine::Draw()
 		//MENU
 	case State::Menu:
 		BTNOff();
-		StartBTN.setActive(true);
+		startBTN.setActive(true);
+		statBTN.setActive(true);
 		exitBTN.setActive(true);
 
 		menuBackground.draw(*window);
-		StartBTN.draw(*window);
+		startBTN.draw(*window);
+		statBTN.draw(*window);
 		exitBTN.draw(*window);
 		if (StartCutscene.AnimGetPlay())
 			StartCutscene.draw(*window);
@@ -125,8 +134,10 @@ void Engine::Draw()
 
 void Engine::BTNOff()
 {
-	StartBTN.setActive(false);
+	startBTN.setActive(false);
 	exitBTN.setActive(false);
 	toMenuBTN.setActive(false);
 	hpBar.setActive(false);
+	statBTN.setActive(false);
+
 }

@@ -14,5 +14,7 @@ private:
 	int _minBet;
 	int _maxBet;
 	int _cash;
+	int _combo;
+	int _maxCombo;
 };
 

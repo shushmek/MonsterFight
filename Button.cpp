@@ -77,6 +77,7 @@ bool Button::isActive() const
 void Button::setSize(float x, float y)
 {
 	sprite->setScale({ x, y });
+	text->setCharacterSize(text->getCharacterSize() * x);
 	centerText();
 }
 
@@ -96,5 +97,5 @@ void Button::centerText()
 	FloatRect spriteBounds = sprite->getGlobalBounds();
 	FloatRect textBouns = text->getGlobalBounds();
 	text->setOrigin({ textBouns.size.x / 2, textBouns.size.y / 2 });
-	text->setPosition({ spriteBounds.position.x + spriteBounds.size.x / 2,spriteBounds.position.y + spriteBounds.size.y / 2 });
+	text->setPosition({ spriteBounds.position.x + spriteBounds.size.x / 2,spriteBounds.position.y + spriteBounds.size.y / 2 - text->getGlobalBounds().size.y/2 });
 }

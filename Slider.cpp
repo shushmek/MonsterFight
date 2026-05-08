@@ -8,6 +8,13 @@ Slider::Slider(Vector2f const& position, string const& texturePath, string const
 	_background->setPosition(position);
 }
 
+Slider::Slider(Vector2f const& position, string const& texturePath,Texture const& texture, string const& buttonText, string const& fontPath, string const& clickSoundPath, Color const& textCol, int const& size)
+	:Button(position, texturePath, buttonText, fontPath, clickSoundPath, textCol, size)
+{
+	_background = new Sprite(texture);
+	_background->setPosition(position);
+}
+
 Slider::Slider(Vector2f const& position, Texture const& texture, string const& buttonText, Font const& font, SoundBuffer const& clickSoundBuffer, Color const& textCol, int const& size) 
 	:Button(position, texture,buttonText,font, clickSoundBuffer,textCol,size)
 {
@@ -34,8 +41,8 @@ void Slider::handleEvent(Event const& event, RenderWindow const& window)
 
 void Slider::setScale(Vector2f scale)
 {
-	sprite->setScale(scale);
 	_background->setScale(scale);
+	sprite->setScale(scale);
 }
 
 void Slider::setPosition(Vector2f pos)
@@ -64,6 +71,12 @@ void Slider::setSliderNum(float x)
 {
 	_slider = x;
 	SetScale(x);
+}
+
+void Slider::setBackground(const Texture& texture)
+{
+	sprite = new Sprite(texture);
+	_background->setPosition(sprite->getPosition());
 }
 
 void Slider::setColor(const Color& color)
