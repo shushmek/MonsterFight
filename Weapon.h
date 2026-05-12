@@ -2,7 +2,6 @@
 #include <iostream>
 #include<SFML/Graphics.hpp>
 #include "Object.h"
-#include "Cards.h"
 #include "Effects.h"
 
 using namespace sf;

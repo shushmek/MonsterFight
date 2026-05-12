@@ -4,7 +4,7 @@ Slider::Slider(Vector2f const& position, string const& texturePath, string const
 	:Button(position, texturePath, buttonText, fontPath, clickSoundPath, textCol, size)
 {
 	_background = new Sprite(AssetManager::GetTexture(texturePath));
-	sprite->setColor(Color(100, 100, 100));
+	sprite->setColor(Color(0, 0, 0));
 	_background->setPosition(position);
 }
 
@@ -60,6 +60,7 @@ void Slider::draw(RenderWindow& window)
 {
 	Button::draw(window);
 	window.draw(*_background);
+	drawText(window);
 }
 
 float Slider::getSliderNum()

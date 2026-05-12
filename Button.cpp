@@ -58,6 +58,11 @@ void Button::draw(RenderWindow& window) const
 	window.draw(*text);
 }
 
+void Button::drawText(RenderWindow& window) const
+{
+	window.draw(*text);
+}
+
 void Button::setText(string const& txt)
 {
 	text->setString(txt);
@@ -90,6 +95,38 @@ void Button::setTextColor(Color const& txt, Color const& outline)
 void Button::setSpriteColor(Color const& color)
 {
 	sprite->setColor(color);
+}
+
+void Button::setPosition(Vector2f pos)
+{
+	sprite->setPosition(pos);
+	centerText();
+}
+
+Vector2f Button::getPosition()
+{
+	return sprite->getPosition();
+}
+
+Vector2f Button::getGlobalSize()
+{
+	return sprite->getGlobalBounds().size;
+}
+
+void Button::setTextOutline(Color col)
+{
+	text->setOutlineThickness(2.f);
+	text->setOutlineColor(col);
+}
+
+void Button::setTextPosition(Vector2f pos)
+{
+	text->setPosition(pos);
+}
+
+Vector2f Button::getTextPosition()
+{
+	return text->getPosition();
 }
 
 void Button::centerText()
