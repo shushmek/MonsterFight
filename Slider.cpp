@@ -1,5 +1,7 @@
 #include "Slider.h"
 
+using namespace std;
+
 Slider::Slider(Vector2f const& position, string const& texturePath, string const& buttonText, string const& fontPath, string const& clickSoundPath, Color const& textCol, int const& size)
 	:Button(position, texturePath, buttonText, fontPath, clickSoundPath, textCol, size)
 {
@@ -94,5 +96,4 @@ void Slider::SetScale(int x)
 {
 	_background->setScale({ _slider * sprite->getScale().x, sprite->getScale().y });
 }
-
 

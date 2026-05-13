@@ -1,5 +1,7 @@
 #include "AssetManager.h"
 
+using namespace std;
+
 unordered_map<string, Texture> AssetManager::_textures;
 unordered_map<string, SoundBuffer> AssetManager::_soundBuffers;
 unordered_map<string, Font> AssetManager::_fonts;
