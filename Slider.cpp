@@ -6,7 +6,7 @@ Slider::Slider(Vector2f const& position, string const& texturePath, string const
 	:Button(position, texturePath, buttonText, fontPath, clickSoundPath, textCol, size)
 {
 	_background = new Sprite(AssetManager::GetTexture(texturePath));
-	sprite->setColor(Color(100, 100, 100));
+	sprite->setColor(Color(0, 0, 0));
 	_background->setPosition(position);
 }
 
@@ -27,7 +27,7 @@ Slider::Slider(Vector2f const& position, Texture const& texture, string const& b
 
 void Slider::handleEvent(Event const& event, RenderWindow const& window)
 {
-	if (!enable) return;
+	if (!active) return;
 	if (Mouse::isButtonPressed(Mouse::Button::Left))
 	{
 		Vector2i mousePos = Mouse::getPosition(window);
@@ -58,10 +58,11 @@ Vector2f Slider::getPosition()
 	return _background->getPosition();
 }
 
-void Slider::draw(RenderWindow& window)
+void Slider::draw(RenderWindow& window) const
 {
 	Button::draw(window);
 	window.draw(*_background);
+	drawText(window);
 }
 
 float Slider::getSliderNum()

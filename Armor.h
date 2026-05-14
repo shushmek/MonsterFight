@@ -2,7 +2,6 @@
 #include <iostream>
 #include<SFML/Graphics.hpp>
 #include "Object.h"
-#include "Cards.h"
 #include "Effects.h"
 #include "Action.h"
 using namespace sf;
@@ -35,7 +34,6 @@ public:
 	void AnimSetOnFinished(function<void()> callback); // лямбда-функция для вызова
 	void AnimUpdate(Time dt); //воспроизводит анимацию. Поместите это в Update() в Engine.cpp  
 	void AnimStop();
-	//Effects getEffect();
 private:
 	string _name;
 	Rarity _rarity;
@@ -47,6 +45,4 @@ private:
 	int _critChace;
 	float _critMod;
 	Object* _sArmor;
-	//Action* _acton1;
-	//Action* _acton2;
 };

@@ -1,7 +1,11 @@
 #pragma once
 #include "Armor.h"
 #include "Weapon.h"
-#include "Action.h"
+#include "Creature.h"
+#include "Player.h"
+#include "Enemy.h"
+
+
 
 
 class ItemList

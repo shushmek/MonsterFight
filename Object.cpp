@@ -87,3 +87,8 @@ void Object::setScale(Vector2f scale)
 {
 	_sprite->setScale(scale);
 }
+
+void Object::setRect(IntRect rect)
+{
+	_sprite->setTextureRect(rect);
+}

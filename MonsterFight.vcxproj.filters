@@ -66,6 +66,7 @@
     <ClCompile Include="Action.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Bet.cpp">
     <ClCompile Include="GameLog.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -135,6 +136,7 @@
     <ClInclude Include="Action.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="Bet.h">
     <ClInclude Include="GameLog.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>

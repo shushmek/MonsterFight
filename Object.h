@@ -32,6 +32,7 @@ public:
 	void setPosition(Vector2f pos);
 	Vector2f getScale();
 	void setScale(Vector2f scale);
+	void setRect(IntRect rect);
 
 	Texture _texture;
 	Sprite* _sprite;

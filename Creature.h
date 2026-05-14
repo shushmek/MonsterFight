@@ -2,10 +2,10 @@
 #include <iostream>
 #include<SFML/Graphics.hpp>
 #include "Object.h"
-#include "Cards.h"
 #include "Effects.h"
 #include "Armor.h"
 #include "Weapon.h"
+#include <random>
 
 using namespace sf;
 using namespace std;
@@ -13,7 +13,7 @@ using namespace std;
 class Creature
 {
 public:
-	Creature(const string& name, const int& lvl, const int& hp, const int& dmg, const int& arm, const int& move, const int& crit, const float& critMod, Weapon& weapon, Armor& armor, Texture const& texture, IntRect const& rect, int frameCount, int Ycount, int frameTime = 0, float animTime = 0);
+	Creature(const string& name, const int& lvl, const int& hp, const int& dmg, const int& arm, const int& move, const int& crit, const float& critMod, Weapon weapon, Armor armor, Texture const& texture, IntRect const& rect, int frameCount, int Ycount, int frameTime = 0, float animTime = 0);
 	void draw(RenderWindow& win) const;
 	void setPosition(Vector2f pos);
 	Vector2f getPosition();
@@ -31,6 +31,9 @@ public:
 	float getCritMod();
 	Weapon getWeapon();
 	Armor getArmor();
+	int Attack();
+	void LevelUp();
+	int getArmorValue();
 
 
 	void setName(string name);
@@ -72,6 +75,6 @@ protected:
 	int _critChance;
 	float _critMod;
 	Object* _sprite;
-	Weapon* _weapon;
-	Armor* _armor;
+	Weapon _weapon;
+	Armor _armor;
 };
