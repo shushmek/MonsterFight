@@ -24,17 +24,17 @@ public:
 	void setScale(Vector2f scale);
 	void draw(RenderWindow& window) const;
 
-	void AnimPlay(); // играть анимацию
-	void AnimPause(); // остановить анимацию
+	void AnimPlay(); // воспроизвести анимацию
+	void AnimPause(); // приостановить анимацию
 	bool AnimGetPlay(); // получить состояние _playing
-	void AnimSetLoop(bool loop); //задать, будет ли анимация цикличной
+	void AnimSetLoop(bool loop); //задать, будет ли анимация зациклена
 	void AnimSetFrameTime(int frametime = 100); //задать время кадра
 	void AminSetAnimTime(float animTime = 1.f); // задать время анимации 
-	void AnimReset(); //сбрость(перейти к первому кадру) анимацию
+	void AnimReset(); //сбросить анимацию (перейти к первому кадру)
 	bool AnimIsFinished() const;//получить состояние _finished
-	void AnimSetOnFinished(function<void()> callback); // лямбда функция вызываем
-	void AnimUpdate(Time dt); //игра анимации. Нужно засунуть в Update() в Engine.cpp  
-	void AnimStop();// остановить и сбрость(перейти к первому кадру) анимацию
+	void AnimSetOnFinished(function<void()> callback); // лямбда-функция для вызова
+	void AnimUpdate(Time dt); //воспроизводит анимацию. Поместите это в Update() в Engine.cpp  
+	void AnimStop();// остановить и сбросить анимацию (перейти к первому кадру)
 	//Effects getEffect();
 private:
 	string _name;
@@ -49,4 +49,3 @@ private:
 	//Effects _effect;
 	Object* _sWeapon;
 };
-

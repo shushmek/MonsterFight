@@ -82,7 +82,7 @@ void Button::setActive(bool state)
 
 bool Button::isActive() const
 {
-	return false;
+	return enable;
 }
 
 void Button::setSize(float x, float y)

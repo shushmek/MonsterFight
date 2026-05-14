@@ -1,0 +1,109 @@
+[2026-05-11 16:32:56] Game started.
+[2026-05-11 16:33:02] Start cutscene launched.
+[2026-05-11 16:33:02] Start cutscene launched.
+[2026-05-11 16:33:02] Start cutscene launched.
+[2026-05-11 16:33:05] Screen changed: Game.
+[2026-05-11 16:33:11] Screen changed: Menu.
+[2026-05-11 16:33:11] Start cutscene launched.
+[2026-05-11 16:33:11] Start cutscene launched.
+[2026-05-11 16:33:11] Start cutscene launched.
+[2026-05-11 16:33:14] Screen changed: Game.
+[2026-05-11 16:33:15] Game saved to Data/save.txt.
+[2026-05-11 16:33:15] Game saved to Data/save.txt.
+[2026-05-11 16:33:15] Game saved to Data/save.txt.
+[2026-05-11 16:33:15] Game saved to Data/save.txt.
+[2026-05-11 16:33:15] Game saved to Data/save.txt.
+[2026-05-11 16:33:15] Game saved to Data/save.txt.
+[2026-05-11 16:33:15] Game saved to Data/save.txt.
+[2026-05-11 16:33:15] Game saved to Data/save.txt.
+[2026-05-11 16:33:15] Game saved to Data/save.txt.
+[2026-05-11 16:33:17] Game loaded from Data/save.txt.
+[2026-05-11 16:33:17] Game loaded from Data/save.txt.
+[2026-05-11 16:33:17] Game loaded from Data/save.txt.
+[2026-05-11 16:33:22] HP changed: 100 -> 99.
+[2026-05-11 16:33:24] HP changed: 99 -> 100.
+[2026-05-11 16:33:26] HP changed: 100 -> 99.
+[2026-05-11 16:33:26] HP changed: 99 -> 98.
+[2026-05-11 16:33:26] HP changed: 98 -> 97.
+[2026-05-11 16:33:27] HP changed: 97 -> 96.
+[2026-05-11 16:33:27] HP changed: 96 -> 95.
+[2026-05-11 16:33:27] HP changed: 95 -> 94.
+[2026-05-11 16:33:27] HP changed: 94 -> 93.
+[2026-05-11 16:33:27] HP changed: 93 -> 92.
+[2026-05-11 16:33:28] HP changed: 92 -> 91.
+[2026-05-11 16:33:28] HP changed: 91 -> 90.
+[2026-05-11 16:33:28] HP changed: 90 -> 89.
+[2026-05-11 16:33:28] HP changed: 89 -> 88.
+[2026-05-11 16:33:28] HP changed: 88 -> 87.
+[2026-05-11 16:33:29] HP changed: 87 -> 86.
+[2026-05-11 16:33:29] HP changed: 86 -> 85.
+[2026-05-11 16:33:29] HP changed: 85 -> 84.
+[2026-05-11 16:33:29] HP changed: 84 -> 83.
+[2026-05-11 16:33:30] HP changed: 83 -> 84.
+[2026-05-11 16:33:30] HP changed: 84 -> 85.
+[2026-05-11 16:33:30] HP changed: 85 -> 86.
+[2026-05-11 16:33:30] HP changed: 86 -> 87.
+[2026-05-11 16:33:30] HP changed: 87 -> 88.
+[2026-05-11 16:33:30] HP changed: 88 -> 89.
+[2026-05-11 16:33:31] HP changed: 89 -> 90.
+[2026-05-11 16:33:31] HP changed: 90 -> 91.
+[2026-05-11 16:33:31] HP changed: 91 -> 92.
+[2026-05-11 16:33:31] HP changed: 92 -> 93.
+[2026-05-11 16:33:31] HP changed: 93 -> 94.
+[2026-05-11 16:33:32] HP changed: 94 -> 95.
+[2026-05-11 16:33:32] HP changed: 95 -> 96.
+[2026-05-11 16:33:32] HP changed: 96 -> 97.
+[2026-05-11 16:33:32] HP changed: 97 -> 98.
+[2026-05-11 16:33:33] HP changed: 98 -> 99.
+[2026-05-11 16:33:33] HP changed: 99 -> 98.
+[2026-05-11 16:33:33] HP changed: 98 -> 97.
+[2026-05-11 16:33:33] HP changed: 97 -> 96.
+[2026-05-11 16:33:33] HP changed: 96 -> 95.
+[2026-05-11 16:33:34] HP changed: 95 -> 94.
+[2026-05-11 16:33:34] HP changed: 94 -> 93.
+[2026-05-11 16:33:34] HP changed: 93 -> 92.
+[2026-05-11 16:33:34] HP changed: 92 -> 91.
+[2026-05-11 16:33:35] HP changed: 91 -> 90.
+[2026-05-11 16:33:35] HP changed: 90 -> 89.
+[2026-05-11 16:33:35] HP changed: 89 -> 88.
+[2026-05-11 16:33:35] HP changed: 88 -> 87.
+[2026-05-11 16:33:35] HP changed: 87 -> 88.
+[2026-05-11 16:33:36] HP changed: 88 -> 89.
+[2026-05-11 16:33:37] HP changed: 89 -> 90.
+[2026-05-11 16:33:37] HP changed: 90 -> 91.
+[2026-05-11 16:33:37] HP changed: 91 -> 92.
+[2026-05-11 16:33:37] HP changed: 92 -> 93.
+[2026-05-11 16:33:37] HP changed: 93 -> 94.
+[2026-05-11 16:33:38] HP changed: 94 -> 95.
+[2026-05-11 16:33:38] HP changed: 95 -> 96.
+[2026-05-11 16:33:38] HP changed: 96 -> 97.
+[2026-05-11 16:33:38] HP changed: 97 -> 98.
+[2026-05-11 16:33:38] HP changed: 98 -> 99.
+[2026-05-11 16:33:39] HP changed: 99 -> 100.
+[2026-05-11 16:33:39] HP changed: 100 -> 99.
+[2026-05-11 16:33:40] HP changed: 99 -> 100.
+[2026-05-11 16:33:42] HP changed: 100 -> 99.
+[2026-05-11 16:33:42] HP changed: 99 -> 100.
+[2026-05-11 16:33:44] Screen changed: Menu.
+[2026-05-11 16:33:45] Game loaded from Data/save.txt.
+[2026-05-11 16:33:45] Game loaded from Data/save.txt.
+[2026-05-11 16:33:45] Game loaded from Data/save.txt.
+[2026-05-11 16:33:46] Screen changed: Statistics.
+[2026-05-11 16:33:51] Screen changed: Menu.
+[2026-05-11 16:33:52] Screen changed: Logs.
+[2026-05-11 16:33:54] Screen changed: Menu.
+[2026-05-11 16:33:54] Start cutscene launched.
+[2026-05-11 16:33:54] Start cutscene launched.
+[2026-05-11 16:33:57] Screen changed: Game.
+[2026-05-11 16:34:03] HP changed: 100 -> 99.
+[2026-05-11 16:34:03] HP changed: 99 -> 100.
+[2026-05-11 16:34:03] HP changed: 100 -> 99.
+[2026-05-11 16:34:07] HP changed: 99 -> 98.
+[2026-05-11 16:34:07] HP changed: 98 -> 97.
+[2026-05-11 16:34:07] HP changed: 97 -> 98.
+[2026-05-11 16:34:07] HP changed: 98 -> 99.
+[2026-05-11 16:34:09] HP changed: 99 -> 98.
+[2026-05-11 16:34:10] HP changed: 98 -> 97.
+[2026-05-11 16:34:10] HP changed: 97 -> 96.
+[2026-05-11 16:34:11] HP changed: 96 -> 95.
+[2026-05-11 16:34:11] HP changed: 95 -> 96.

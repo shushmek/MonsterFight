@@ -1,5 +1,6 @@
 #include "Creature.h"
 
+using namespace std;
 
 Creature::Creature(const string& name, const int& lvl, const int& hp, const int& dmg, const int& arm, const int& move, const int& crit, const float& critMod, Weapon weapon, Armor armor,  Texture const& texture, IntRect const& rect, int frameCount, int Ycount, int frameTime, float animTime)
 	:_name(name), _level(lvl), _health(hp), _damage(dmg), _arm(arm), _move(move), _critChance(crit), _critMod(critMod), _weapon(weapon), _armor(armor), _maxHP(hp), _maxMove(move)
@@ -168,12 +169,12 @@ void Creature::setCritMod(float critMod)
 	_critMod = critMod;
 }
 
-void Creature::setWeapon(Weapon weapon)
+void Creature::setWeapon(Weapon& weapon)
 {
 	_weapon = weapon;
 }
 
-void Creature::setArmor(Armor armor)
+void Creature::setArmor(Armor& armor)
 {
 	_armor = armor;
 }

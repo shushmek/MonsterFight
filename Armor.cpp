@@ -1,5 +1,7 @@
 #include "Armor.h"
 
+using namespace std;
+
 Armor::Armor(const string& name, const Rarity& rarity, const int& armor, const int& min, const int& max, const int& move, const int& combo, const int& crit, const float& critMode, Texture const& texture, IntRect const& rect, int frameCount, int Ycount, int frameTime, float animTime)
     : _name(name), _rarity(rarity), _armor(armor), _minBet(min), _maxBet(max), _move(move), _combo(combo), _critChace(crit), _critMod(critMode)
 {
