@@ -1,6 +1,6 @@
 #include "Button.h"
 
-Button::Button(Vector2f const& position, string const& texturePath, string const& buttonText, string const& fontPath, string const& clickSoundPath, Color const& textCol, int const& size) : enable(true)
+Button::Button(Vector2f const& position, string const& texturePath, string const& buttonText, string const& fontPath, string const& clickSoundPath, Color const& textCol, int const& size) : active(true)
 {
 	Texture& texture = AssetManager::GetTexture(texturePath);
 	sprite = new Sprite(texture);
@@ -17,9 +17,10 @@ Button::Button(Vector2f const& position, string const& texturePath, string const
 		SoundBuffer& soundBuffer = AssetManager::GetSoundBuffer(clickSoundPath);
 		clickSound = new Sound(soundBuffer);
 	}
+	setTextOutline(Color::Black, 2.f);
 }
 
-Button::Button(Vector2f const& position, Texture const& texture, string const& buttonText, Font const& font, SoundBuffer const& clickSoundBuffer, Color const& textCol, int const& size) : enable(true)
+Button::Button(Vector2f const& position, Texture const& texture, string const& buttonText, Font const& font, SoundBuffer const& clickSoundBuffer, Color const& textCol, int const& size) : active(true)
 {
 	sprite = new Sprite(texture);
 	sprite->setPosition(position);
@@ -29,6 +30,8 @@ Button::Button(Vector2f const& position, Texture const& texture, string const& b
 	text->setFillColor(textCol);
 	centerText();
 	clickSound = new Sound(clickSoundBuffer);
+	setTextOutline(Color::Black, 2.f);
+
 }
 
 void Button::setOnClick(function<void()> callback)
@@ -38,7 +41,7 @@ void Button::setOnClick(function<void()> callback)
 
  void Button::handleEvent(Event const& event, RenderWindow const& window)
 {
-	if (!enable)
+	if (!active)
 		return;
 	if (Mouse::isButtonPressed(Mouse::Button::Left))
 	{
@@ -54,8 +57,11 @@ void Button::setOnClick(function<void()> callback)
 
 void Button::draw(RenderWindow& window) const
 {
-	window.draw(*sprite);
-	window.draw(*text);
+	if (isDrawed)
+	{
+		window.draw(*sprite);
+		window.draw(*text);
+	}
 }
 
 void Button::drawText(RenderWindow& window) const
@@ -71,7 +77,7 @@ void Button::setText(string const& txt)
 
 void Button::setActive(bool state)
 {
-	enable = state;
+	active = state;
 }
 
 bool Button::isActive() const
@@ -113,9 +119,9 @@ Vector2f Button::getGlobalSize()
 	return sprite->getGlobalBounds().size;
 }
 
-void Button::setTextOutline(Color col)
+void Button::setTextOutline(Color col, const float& x)
 {
-	text->setOutlineThickness(2.f);
+	text->setOutlineThickness(x);
 	text->setOutlineColor(col);
 }
 
@@ -127,6 +133,11 @@ void Button::setTextPosition(Vector2f pos)
 Vector2f Button::getTextPosition()
 {
 	return text->getPosition();
+}
+
+void Button::setIsDrawed(bool state)
+{
+	isDrawed = state;
 }
 
 void Button::centerText()

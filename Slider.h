@@ -10,7 +10,7 @@ public:
 	void setScale(Vector2f scale);
 	void setPosition(Vector2f pos);
 	Vector2f getPosition();
-	void draw(RenderWindow& window);
+	void draw(RenderWindow& window) const;
 	float getSliderNum();
 	void setSliderNum(float x);
 	void setBackground(const Texture& texture);

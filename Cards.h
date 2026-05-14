@@ -1,6 +1,7 @@
 #pragma once
 #include "Button.h"
 #include "Player.h"
+#include "Bet.h"
 
 using namespace sf;
 using namespace std;
@@ -9,7 +10,7 @@ class Cards:public Button
 {
 public:
 	enum Type {Attack, Defense, Utility};
-	Cards(Type type, const string& name, int costAP, int costCP, int min, int max, Vector2f const& position, string const& texturePath, string const& buttonText, string const& fontPath, string const& clickSoundPath = "", Color const& textCol = Color::Black, int const& size = 24);
+	Cards(Type type, const string& name, int costAP, int costCP, int min, int max, Vector2f const& position, string const& texturePath, string const& buttonText, string const& fontPath, string const& clickSoundPath = "", Color const& textCol = Color::White, int const& size = 24);
 	Type getType();
 	string getName();
 	int getCostAP();
@@ -18,9 +19,18 @@ public:
 	int getMaxBet();
 	void draw(RenderWindow& window) const;
 	void setEffect(const string& effect, IntRect const& rect);
-	void setEffectPosition(Vector2f pos);
-	void setEffectTextPosition(Vector2f pos);
+	void setEffectPosition(Vector2f pos1, Vector2f pos2);
+	void Action();
+	void setAction(function<void()> callback);
+	virtual void handleEvent(Event const& event, RenderWindow const& window);
+	void setSliderText(const string& txt);
+	float getSliderValue();
+	void setActive(bool state);
+	bool getActive();
+
 private:
+	bool _active = false;
+	Bet _slider;
 	Type _type;
 	string _name;
 	int _costAP;
@@ -35,5 +45,6 @@ private:
 	Object* _costCPObj;
 	Object* _effect;
 	Text* _effectT;
+	function<void()> _action;
 };
 

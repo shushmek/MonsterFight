@@ -5,6 +5,7 @@
 #include "Effects.h"
 #include "Armor.h"
 #include "Weapon.h"
+#include <random>
 
 using namespace sf;
 using namespace std;
@@ -30,6 +31,9 @@ public:
 	float getCritMod();
 	Weapon getWeapon();
 	Armor getArmor();
+	int Attack();
+	void LevelUp();
+	int getArmorValue();
 
 
 	void setName(string name);

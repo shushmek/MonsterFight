@@ -11,9 +11,9 @@ class Button
 public:
 	bool isPressed = false; //состояние нажата ли. внутри функций не используется(я имею ввиду за функции в Button.cpp)
 	Clock clock; // время, может работать как таймер
-	Button(Vector2f const& position, string const& texturePath, string const& buttonText, string const& fontPath, string const& clickSoundPath = "", Color const& textCol = Color::Black, int const& size = 24);
+	Button(Vector2f const& position, string const& texturePath, string const& buttonText, string const& fontPath, string const& clickSoundPath = "", Color const& textCol = Color::White, int const& size = 24);
 	//↑ конструктор в котором нужно задавать пути, например: Button btn({200, 200}, "путь к текстуре", "текст на кнопке", "путь к шрифту", "путь к звуковому буферу(если нет писать "")", цвет текста, размер текста ); {200, 200}-координаты расположения кнопки
-	Button(Vector2f const& position, Texture const& texture, string const& buttonText, Font const& font, SoundBuffer const& clickSoundBuffer, Color const& textCol = Color::Black, int const& size = 24);
+	Button(Vector2f const& position, Texture const& texture, string const& buttonText, Font const& font, SoundBuffer const& clickSoundBuffer, Color const& textCol = Color::White, int const& size = 24);
 	//↑ конструктор в котором нужно задавать объекты, например: Button btn({200, 200}, текстура, "текст на кнопке", шрифт,буфер звука, цвет текста, размер текста ); {200, 200}-координаты расположения кнопки
 	void setOnClick(function<void()> callback); // лямбда функция вызываемая при нажатии, т.е. функция при вызове которой происходит что угодно, например: btn.setOnClick([]() {cout << "hello" << endl; });
 												// НЕ ЗАБУТЬ ЗА ТОЧКУ С ЗАПЯТОЙ! в данном примере при нажатии на кнопку выводится "hello"
@@ -24,22 +24,25 @@ public:
 	void setActive(bool enable); //изменить кликабельность кнопки
 	bool isActive() const; //активна ли кнопка, если нет то на нее нельзя нажать
 	void setSize(float x, float y); // изменитиь размер
-  void setTextColor(Color const& txt, Color const& outline = Color::Black); // изменить цвет текста
-  virtual void setSpriteColor(Color const& color); // изменить цвет спрайта
-  void setPosition(Vector2f pos);
-  Vector2f getPosition();
-  Vector2f getGlobalSize();
-  void setTextOutline(Color col);
-  void setTextPosition(Vector2f pos);
-  Vector2f getTextPosition();
+	void setTextColor(Color const& txt, Color const& outline = Color::Black); // изменить цвет текста
+	virtual void setSpriteColor(Color const& color); // изменить цвет спрайта
+	void setPosition(Vector2f pos);
+	Vector2f getPosition();
+	Vector2f getGlobalSize();
+	void setTextOutline(Color col, const float& x);
+	void setTextPosition(Vector2f pos);
+	Vector2f getTextPosition();
+	void setIsDrawed(bool state);
 
 
 protected:
 	Sprite *sprite;
 	Text *text;
 	Sound *clickSound;
-	bool enable;
+	bool active;
 	function<void()> onClickCallback;
 	void centerText();
+	bool isDrawed = true;
+
 };
 

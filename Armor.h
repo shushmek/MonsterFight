@@ -34,7 +34,6 @@ public:
 	void AnimSetOnFinished(function<void()> callback); // лямбда функция вызываем
 	void AnimUpdate(Time dt); //игра анимации. Нужно засунуть в Update() в Engine.cpp  
 	void AnimStop();
-	//Effects getEffect();
 private:
 	string _name;
 	Rarity _rarity;
@@ -46,7 +45,5 @@ private:
 	int _critChace;
 	float _critMod;
 	Object* _sArmor;
-	//Action* _acton1;
-	//Action* _acton2;
 };
 

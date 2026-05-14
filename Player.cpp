@@ -52,3 +52,8 @@ void Player::setCombo(int combo)
 {
 	_combo = combo;
 }
+
+void Player::LevelUp()
+{
+	_level++;
+}

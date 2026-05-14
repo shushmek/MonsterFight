@@ -14,6 +14,7 @@ public:
 	void setMaxCombo(int  maxCombo);
 	int getCombo();
 	void setCombo(int combo);
+	void LevelUp();
 
 private:
 	int _minBet;

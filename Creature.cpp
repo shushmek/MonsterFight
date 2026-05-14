@@ -98,6 +98,26 @@ Armor Creature::getArmor()
 	return _armor;
 }
 
+int Creature::Attack()
+{
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<int> dist(1, 100);
+	if (dist(gen) <= _critChance)	return static_cast<int>(round((_weapon.getDamage() + _damage) * _critMod));
+	else	return _weapon.getDamage()+_damage;
+}
+
+void Creature::LevelUp()
+{
+	_level++;
+	cout << _level << endl;
+}
+
+int Creature::getArmorValue()
+{
+	return _armor.getArmor();
+}
+
 void Creature::setName(string name)
 {
 	_name = name;
