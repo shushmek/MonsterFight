@@ -1,7 +1,5 @@
 #include "Object.h"
 
-using namespace std;
-
 Object::Object(Texture const& texture, IntRect const& rect, int frameCount, int Ycount, int frameTime, float animTime)
 {
 	_sprite = new Sprite(texture);

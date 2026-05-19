@@ -55,4 +55,5 @@ Bet::Bet()
 	_slider = new Slider({ 350, 300 }, "Sprite/square.jpg", "100000", "Font/BankGothic.otf", "");
 	_slider->setScale({ 2,1 });
 	_slider->setColor(Color(255,235,0));
+	_slider->setSliderNum(0.f);
 }

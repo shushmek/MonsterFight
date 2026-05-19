@@ -1,7 +1,5 @@
 #include "Weapon.h"
 
-using namespace std;
-
 Weapon::Weapon(const string& name, const Rarity& rarity, const int& damage, const int& min, const int& max, const int& move, const int& combo, const int& crit, const float& critMode, Texture const& texture, IntRect const& rect, int frameCount, int Ycount, int frameTime, float animTime)
     : _name(name), _rarity(rarity), _damage(damage), _minBet(min), _maxBet(max), _move(move), _combo(combo), _critChace(crit), _critMod(critMode)
 {
@@ -107,4 +105,14 @@ void Weapon::AnimUpdate(Time dt)
 void Weapon::AnimStop()
 {
 	_sWeapon->AnimStop();
+}
+
+void Weapon::setCardID(int id)
+{
+	_cardID = id;
+}
+
+int Weapon::getCardID()
+{
+	return _cardID;
 }

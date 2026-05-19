@@ -33,6 +33,11 @@ public:
 	void setTextPosition(Vector2f pos);
 	Vector2f getTextPosition();
 	void setIsDrawed(bool state);
+	bool getIsDrawed();
+	void setSprite(Texture& _texture, IntRect rect);
+	void setSprite(Texture& _texture);
+
+
 
 protected:
 	Sprite *sprite;
@@ -42,4 +47,6 @@ protected:
 	function<void()> onClickCallback;
 	void centerText();
 	bool isDrawed = true;
+
 };
+

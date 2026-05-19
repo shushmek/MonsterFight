@@ -82,7 +82,7 @@ void Button::setActive(bool state)
 
 bool Button::isActive() const
 {
-	return enable;
+	return false;
 }
 
 void Button::setSize(float x, float y)
@@ -138,6 +138,23 @@ Vector2f Button::getTextPosition()
 void Button::setIsDrawed(bool state)
 {
 	isDrawed = state;
+}
+
+bool Button::getIsDrawed()
+{
+	return isDrawed;
+}
+
+void Button::setSprite(Texture& _texture, IntRect rect)
+{
+	Button::sprite->setTexture(_texture);
+	Button::sprite->setTextureRect(rect);
+}
+
+void Button::setSprite(Texture& _texture)
+{
+	//sprite->setTexture(_sprite);
+	Button::sprite->setTexture(_texture);
 }
 
 void Button::centerText()

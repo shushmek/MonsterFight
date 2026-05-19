@@ -1,7 +1,5 @@
 #include "Action.h"
 
-using namespace std;
-
 int Action::action(int x)
 {
 	_function();

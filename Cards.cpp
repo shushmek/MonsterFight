@@ -31,7 +31,7 @@ Cards::Cards(Type type, const string& name, int costAP, int costCP, int min, int
 	_costAPT->setPosition({ this->getPosition().x + 5, this->getPosition().y - 5 });
 	_costAPT->setString(to_string(_costAP));
 	_nameT->setString(_name);
-	_nameT->setPosition({this->getPosition().x+ getGlobalSize().x/2 - _nameT->getGlobalBounds().size.x/2 + 16, this->getPosition().y + 32});
+	_nameT->setPosition({this->getPosition().x+ getGlobalSize().x/2 - _nameT->getGlobalBounds().size.x/2 + 16, this->getPosition().y + 100});
 	_costAPT->setFillColor(Color::Black);
 	_costCPT->setFillColor(Color::Black);
 	_nameT->setFillColor(Color::Black);
@@ -68,9 +68,13 @@ Cards::Cards(Type type, const string& name, int costAP, int costCP, int min, int
 	_effectT->setFillColor(textCol);
 	_effectT->setOutlineColor(Color::Black);
 	_effectT->setOutlineThickness(x);
-	_slider.setOnClick([this]() {_slider.setActive(false); Action();}); 
-	this->setOnClick([this]() {_slider.setActive(true);});
-
+	if (type != Cards::Utility)
+	{
+		_slider.setOnClick([this]() {_slider.setActive(false); Action();}); 
+		this->setOnClick([this]() {_slider.setActive(true);});
+	}
+	else
+		this->setOnClick([this]() {Action();});
 }
 
 Cards::Type Cards::getType()
@@ -117,10 +121,11 @@ void Cards::draw(RenderWindow& window) const
 	_slider.draw(window);
 }
 
-void Cards::setEffect(const string& effect, IntRect const& rect)
+void Cards::setEffect(const string& effect, IntRect const& rect, int size)
 {
 	_effectT->setString(effect);
 	_effect->setRect(rect);
+	_effectT->setCharacterSize(size);
 }
 
 void Cards::setEffectPosition(Vector2f pos1, Vector2f pos2)
@@ -174,4 +179,51 @@ void Cards::setActive(bool state)
 bool Cards::getActive()
 {
 	return _active;
+}
+
+void Cards::setPosition(Vector2f pos)
+{
+	Button::setPosition(pos);
+
+	float buttonWidth = getGlobalSize().x;
+	float nameWidth = _nameT->getGlobalBounds().size.x;
+
+	// Теперь используем pos (новую позицию)
+	if (_costCP != 0 && _costCPObj)
+	{
+		_costCPObj->setPosition({ pos.x + 32, pos.y });
+		_costCPT->setPosition({ _costCPObj->getPosition().x + 5,
+							   _costCPObj->getPosition().y - 5 });
+	}
+
+	_effectT->setPosition({ pos.x + buttonWidth / 2 - nameWidth / 2 + 16, pos.y + 32 });
+	_effect->setPosition({ pos.x + buttonWidth / 2 - nameWidth / 2 + 16, pos.y + 32 });
+	_costAPT->setPosition({ pos.x + 5, pos.y - 5 });
+	_nameT->setPosition({ pos.x + buttonWidth / 2 - nameWidth / 2 + 16, pos.y + 32 });
+
+	if (_typeObj)
+		_typeObj->setPosition({ pos.x + 32, pos.y + 86 });
+	//Button::setPosition(pos);
+	//if (_costCP != 0)
+	//{
+	//	_costCPObj->setPosition({ this->getPosition().x + 32, this->getPosition().y });
+	//	_costCPT->setPosition({ _costCPObj->getPosition().x + 5, _costCPObj->getPosition().y - 5 });
+	//	_costCPT->setString(to_string(_costCP));
+	//}
+	//_effectT->setPosition({ this->getPosition().x + getGlobalSize().x / 2 - _nameT->getGlobalBounds().size.x / 2 + 16, this->getPosition().y + 32 });
+	//_effect->setPosition({ this->getPosition().x + getGlobalSize().x / 2 - _nameT->getGlobalBounds().size.x / 2 + 16, this->getPosition().y + 32 });
+	//_costAPT->setPosition({ this->getPosition().x + 5, this->getPosition().y - 5 });
+	//_nameT->setPosition({ this->getPosition().x + getGlobalSize().x / 2 - _nameT->getGlobalBounds().size.x / 2 + 16, this->getPosition().y + 32 });
+	//_typeObj->setPosition({ this->getPosition().x + 32, this->getPosition().y + 86 });
+
+}
+
+void Cards::setTypeObj(int id)
+{
+	_typeObj = new Object(AssetManager::GetTexture("Sprite/_ui.png"), IntRect({ 32*id,0 }, { 32,32 }), 1, 1, 100);
+}
+
+void Cards::setTextButton(const string& str)
+{
+	this->setTextButton(str);
 }

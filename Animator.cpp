@@ -1,7 +1,5 @@
 #include "Animator.h"
 
-using namespace std;
-
 Animator::Animator(Sprite& sprite, IntRect const& rect, int frameCount, int Ycount, int frameTime, float animTime) : _sprite(sprite), _playing(true), _loop(true), _finished(false), _animTime(animTime), _frameTime(frameTime), _maxYframe(Ycount)
 {
 	if (_frameTime == 0)	_frameTime = static_cast<int>(std::round(_animTime * 1000 / frameCount));

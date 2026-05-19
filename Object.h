@@ -8,26 +8,26 @@
 using namespace sf;
 using namespace std;
 
-class Object //будет расширяться
+class Object //будет дополнятся
 {
 public:
 	Object(Texture const& texture, IntRect const& rect, int frameCount, int Ycount, int frameTime = 0, float animTime = 0); //конструктор
 		// 	          1						2
-		//1-ссылка на текстуру, 2 как в аниматоре
+		//1-ссылка на  текстуру, 2 как в аниматоре
 	//функции из аниматора
-	void AnimPlay(); // воспроизвести анимацию
-	void AnimPause(); // приостановить анимацию
+	void AnimPlay(); // играть анимацию
+	void AnimPause(); // остановить анимацию
 	bool AnimGetPlay(); // получить состояние _playing
-	void AnimSetLoop(bool loop); //задать, будет ли анимация зациклена
+	void AnimSetLoop(bool loop); //задать, будет ли анимация цикличной
 	void AnimSetFrameTime(int frametime = 100); //задать время кадра
 	void AminSetAnimTime(float animTime = 1.f); // задать время анимации 
-	void AnimReset(); //сбросить анимацию (перейти к первому кадру)
+	void AnimReset(); //сбрость(перейти к первому кадру) анимацию
 	bool AnimIsFinished() const;//получить состояние _finished
-	void AnimSetOnFinished(function<void()> callback); // лямбда-функция для вызова
-	void AnimUpdate(Time dt); //воспроизводит анимацию. Поместите это в Update() в Engine.cpp  
-	void AnimStop();// остановить и сбросить анимацию (перейти к первому кадру)
+	void AnimSetOnFinished(function<void()> callback); // лямбда функция вызываем
+	void AnimUpdate(Time dt); //игра анимации. Нужно засунуть в Update() в Engine.cpp  
+	void AnimStop();// остановить и сбрость(перейти к первому кадру) анимацию
 	void draw(RenderWindow& window) const;
-	//базовые функции
+	//бфзовые функции
 	Vector2f getPosition();
 	void setPosition(Vector2f pos);
 	Vector2f getScale();
@@ -38,3 +38,4 @@ public:
 	Sprite* _sprite;
 	Animator* _anim;
 };
+

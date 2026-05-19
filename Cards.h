@@ -18,7 +18,7 @@ public:
 	int getMinBet();
 	int getMaxBet();
 	void draw(RenderWindow& window) const;
-	void setEffect(const string& effect, IntRect const& rect);
+	void setEffect(const string& effect, IntRect const& rect, int size = 24);
 	void setEffectPosition(Vector2f pos1, Vector2f pos2);
 	void Action();
 	void setAction(function<void()> callback);
@@ -27,7 +27,9 @@ public:
 	float getSliderValue();
 	void setActive(bool state);
 	bool getActive();
-
+	void setPosition(Vector2f pos);
+	void setTypeObj(int id);
+	void setTextButton(const string& str);
 private:
 	bool _active = false;
 	Bet _slider;
